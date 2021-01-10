@@ -1,12 +1,17 @@
 // plugins
-const { ProgressPlugin } = require('webpack')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const { ProgressPlugin } = require("webpack")
+const merge = require("webpack-merge")
+
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const sveltePreprocess = require("svelte-preprocess")
 
 const { Path } = require("../utils/path")
 const root = Path(__dirname, "..")
 
-module.exports = (_, {mode = "development"} = {}) => {
-  return {
+const cssConfig = require("./css.config")
+
+module.exports = (...args) => {
+  const base = {
     entry: {
       app: root.src("index.ts")
     },
@@ -19,21 +24,37 @@ module.exports = (_, {mode = "development"} = {}) => {
         root.src(),
         root.node_modules()
       ],
-      extensions: [".js"],
+      extensions: [".js", ".ts", ".svelte"],
       alias: {
+        svelte: root.node_modules("svelte"),
         "lib": root.src("lib")
-      }
+      },
+      mainFields: ["svelte", "browser", "module", "main"],
     },
     module: {
       rules: [
         {
+          test: /\.(svelte)$/,
+          include: root.src(),
+          exclude: [root.node_modules()],
+          use: {
+            loader: "svelte-loader",
+            options: {
+              hotReload: true,
+              emitCss: true,
+              preprocess: sveltePreprocess({})
+            },
+          },
+        },
+        {
           test: /\.tsx?$/,
           loader: "ts-loader",
+          include: root.src(),
+          exclude: [root.node_modules()],
           options: {
             transpileOnly: true,
           },
-          exclude: [root.node_modules()],
-        },
+        }
       ]
     },
     plugins: [
@@ -52,4 +73,6 @@ module.exports = (_, {mode = "development"} = {}) => {
     },
     devtool: "source-map" 
   }
+
+  return merge(base, cssConfig(...args))
 }
