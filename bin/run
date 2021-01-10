@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+set -e
+
+docker run --rm -it \
+  $(docker.workdir /app) \
+  $(docker.mount.app) \
+  $(docker.port 80) \
+  "node:alpine" \
+  ${@:-"sh"}
