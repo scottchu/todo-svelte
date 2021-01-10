@@ -1,0 +1,18 @@
+{
+  "name": "todo",
+  "version": "1.0.0",
+  "description": "A Simple Todo App to explore SVELTE and Web Worker\"",
+  "main": "dist/index.html",
+  "scripts": {
+    "dev.bundle": "webpack -- --config ./webpack/base.config.js --mode development",
+    "dev.serve": "webpack serve -- --config ./webpack/base.config.js --mode development"
+  },
+  "author": "Scott Chu",
+  "license": "MIT",
+  "devDependencies": {
+    "html-webpack-plugin": "^4.5.1",
+    "webpack": "^5.12.2",
+    "webpack-cli": "^4.3.1",
+    "webpack-dev-server": "^3.11.1"
+  }
+}
