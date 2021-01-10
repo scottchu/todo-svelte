@@ -1,6 +1,6 @@
 // plugins
 const { ProgressPlugin } = require("webpack")
-const merge = require("webpack-merge")
+const { merge } = require("webpack-merge")
 
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const sveltePreprocess = require("svelte-preprocess")
@@ -25,7 +25,7 @@ module.exports = (...args) => {
         project.src(),
         project.node_modules()
       ],
-      extensions: [".js", ".ts", ".svelte"],
+      extensions: [".js", ".ts", ".json", ".svelte", ".mjs"],
       alias: {
         lib: project.src("lib"),
         svelte: project.node_modules("svelte"),
@@ -36,7 +36,7 @@ module.exports = (...args) => {
       rules: [
         {
           test: /\.(html|svelte)$/,
-          include: project.src(),
+          include: [project.src()],
           exclude: [
             project.src("index.html"),
             project.node_modules()
@@ -44,8 +44,8 @@ module.exports = (...args) => {
           use: {
             loader: "svelte-loader",
             options: {
-              hotReload: true,
-              emitCss: true,
+              hot: true,
+              emitCss: false,
               preprocess: sveltePreprocess({})
             },
           },
@@ -62,5 +62,7 @@ module.exports = (...args) => {
     devtool: "source-map" 
   }
 
-  return merge(base, css(...args), devServer(...args), typescript(...args))
+  const config = merge(base, css(...args), devServer(...args), typescript(...args))
+
+  return config
 }

@@ -10,7 +10,9 @@ const uses = (mode) => {
 }
 
 const plugins = (mode) => {
-  return isProduction(mode) ? [new MiniCssExtractPlugin("styles.css")]: []
+  return isProduction(mode) ? [new MiniCssExtractPlugin({
+    filename: "[name].css"
+  })]: []
 }
 
 const config = (_, {mode = "development"} = {}) => {

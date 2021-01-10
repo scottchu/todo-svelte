@@ -1,6 +1,5 @@
-import App from "./App"
+import App from "./components/App" 
 
-const app = new App({
-	target: document.getElementById("app"),
-	props: {}
-});
+const target = document.querySelector("#app")
+
+new App({target})
