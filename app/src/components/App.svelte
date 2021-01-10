@@ -1,5 +1,4 @@
 <script lang="ts">
- 
 
 </script>
 
@@ -13,5 +12,5 @@
 </style>
 
 <div class="app-container">
-
+  Hello World!
 </div>

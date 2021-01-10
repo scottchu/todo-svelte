@@ -2,6 +2,9 @@ const { project } = require("../../utils/path")
 
 module.exports = () => {
   return {
+    resolve: {
+      extensions: [".ts"]
+    },
     module: {
       rules: [
         {
