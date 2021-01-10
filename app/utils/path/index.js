@@ -13,4 +13,6 @@ const Path = (...base) => {
   return new Proxy(path, handler)
 }
 
-module.exports = { Path }
+const project = Path(__dirname, "..", "..")
+
+module.exports = { Path, project }

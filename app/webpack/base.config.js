@@ -5,38 +5,41 @@ const merge = require("webpack-merge")
 const HtmlWebpackPlugin = require("html-webpack-plugin")
 const sveltePreprocess = require("svelte-preprocess")
 
-const { Path } = require("../utils/path")
-const root = Path(__dirname, "..")
+const {path: {project}} = require("../utils")
 
-const cssConfig = require("./css.config")
+const css = require("./config/css")
+const devServer = require("./config/devServer")
 
 module.exports = (...args) => {
   const base = {
     entry: {
-      app: root.src("index.ts")
+      app: project.src("index.ts")
     },
     output: {
       filename: "[name].js",
-      path: root.dist()
+      path: project.dist()
     },
     resolve: {
       modules: [
-        root.src(),
-        root.node_modules()
+        project.src(),
+        project.node_modules()
       ],
       extensions: [".js", ".ts", ".svelte"],
       alias: {
-        svelte: root.node_modules("svelte"),
-        "lib": root.src("lib")
+        svelte: project.node_modules("svelte"),
+        "lib": project.src("lib")
       },
       mainFields: ["svelte", "browser", "module", "main"],
     },
     module: {
       rules: [
         {
-          test: /\.(svelte)$/,
-          include: root.src(),
-          exclude: [root.node_modules()],
+          test: /\.(html|svelte)$/,
+          include: project.src(),
+          exclude: [
+            project.src("index.html"),
+            project.node_modules()
+          ],
           use: {
             loader: "svelte-loader",
             options: {
@@ -49,8 +52,8 @@ module.exports = (...args) => {
         {
           test: /\.tsx?$/,
           loader: "ts-loader",
-          include: root.src(),
-          exclude: [root.node_modules()],
+          include: project.src(),
+          exclude: [project.node_modules()],
           options: {
             transpileOnly: true,
           },
@@ -61,18 +64,11 @@ module.exports = (...args) => {
       new ProgressPlugin(),
       new HtmlWebpackPlugin({ 
         filename: 'index.html',
-        template: root.src("index.html")
+        template: project.src("index.html")
       })
     ],
-    devServer: {
-      contentBase: root.dist(),
-      historyApiFallback: true,
-      host: "0.0.0.0",
-      hot: true,
-      port: process.env.PORT || 80
-    },
     devtool: "source-map" 
   }
 
-  return merge(base, cssConfig(...args))
+  return merge(base, css(...args), devServer(...args))
 }
