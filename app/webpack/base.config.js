@@ -9,6 +9,7 @@ const {path: {project}} = require("../utils")
 
 const css = require("./config/css")
 const devServer = require("./config/devServer")
+const typescript = require("./config/typescript")
 
 module.exports = (...args) => {
   const base = {
@@ -26,8 +27,8 @@ module.exports = (...args) => {
       ],
       extensions: [".js", ".ts", ".svelte"],
       alias: {
+        lib: project.src("lib"),
         svelte: project.node_modules("svelte"),
-        "lib": project.src("lib")
       },
       mainFields: ["svelte", "browser", "module", "main"],
     },
@@ -48,15 +49,6 @@ module.exports = (...args) => {
               preprocess: sveltePreprocess({})
             },
           },
-        },
-        {
-          test: /\.tsx?$/,
-          loader: "ts-loader",
-          include: project.src(),
-          exclude: [project.node_modules()],
-          options: {
-            transpileOnly: true,
-          },
         }
       ]
     },
@@ -70,5 +62,5 @@ module.exports = (...args) => {
     devtool: "source-map" 
   }
 
-  return merge(base, css(...args), devServer(...args))
+  return merge(base, css(...args), devServer(...args), typescript(...args))
 }
