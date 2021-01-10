@@ -23,7 +23,6 @@ module.exports = () => {
           use: {
             loader: "svelte-loader",
             options: {
-              hotReload: true,
               emitCss: false,
               preprocess: sveltePreprocess({})
             },
