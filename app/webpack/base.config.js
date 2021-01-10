@@ -8,7 +8,7 @@ const root = Path(__dirname, "..")
 module.exports = (_, {mode = "development"} = {}) => {
   return {
     entry: {
-      app: root.src("index.js")
+      app: root.src("index.ts")
     },
     output: {
       filename: "[name].js",
@@ -26,6 +26,14 @@ module.exports = (_, {mode = "development"} = {}) => {
     },
     module: {
       rules: [
+        {
+          test: /\.tsx?$/,
+          loader: "ts-loader",
+          options: {
+            transpileOnly: true,
+          },
+          exclude: [root.node_modules()],
+        },
       ]
     },
     plugins: [
