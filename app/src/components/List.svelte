@@ -19,6 +19,10 @@
     flex-wrap: nowrap;
   }
 
+  ul.list.horizontal li:not(:last-of-type) {
+    margin-right: 6px;
+  }
+
 </style>
 
 <div class="list-container">

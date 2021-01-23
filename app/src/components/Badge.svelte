@@ -12,7 +12,6 @@
     align-items: center;
     justify-content: center;
 
-    margin: -3px -6px;
     padding: 3px 6px;
     background: none;
     border-radius: 1px;

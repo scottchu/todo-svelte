@@ -11,15 +11,14 @@
     justify-content: center;
     align-items: center;
 
+    border-radius: 1px;
     border: none;
-    color: #8F8F8F;
     outline: none;
-    border-radius: 3px;
+    color: #8F8F8F;
     
     line-height: 0.9em;
     background-color: transparent;
 
-    mix-blend-mode: normal;
     transform: scale3d(1, 1, 1);
     transition: all ease-in-out 250ms;
   }

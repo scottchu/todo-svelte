@@ -5,7 +5,7 @@
 
   import Button from "../Button"
   import Card from "../Card"
-  import Badge from "../Badge"
+  import Label from "../Label"
   import Text from "../Text"
 
   export let item: any
@@ -44,7 +44,7 @@
       </div>
     </div>
     <div slot="footer">
-      <Badge 
+      <Label 
         capitalize 
         value={item.status} />
     </div>
