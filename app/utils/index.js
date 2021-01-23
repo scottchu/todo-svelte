@@ -1,3 +1,4 @@
 const path = require("./path")
+const config = require("./config")
 
-module.exports = {path}
+module.exports = { path, config }

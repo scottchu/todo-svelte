@@ -4,8 +4,8 @@
   "description": "A Simple Todo App to explore SVELTE and Web Worker\"",
   "main": "dist/index.html",
   "scripts": {
-    "build": "webpack -- --config ./webpack/base.config.js --mode=production",
-    "start": "webpack serve -- --config ./webpack/base.config.js --mode=development"
+    "build": "webpack -- --config ./webpack/build.js --mode=production",
+    "start": "webpack serve -- --config ./webpack/watch.js --mode=development"
   },
   "author": "Scott Chu",
   "license": "MIT",
