@@ -1,7 +1,6 @@
 <script lang="ts">
   import "normalize.css"
-
-  import TodoList from "./Todo/List"
+  import Todo from "./Todo"
 </script>
 
 <style>
@@ -23,5 +22,5 @@
 </style>
 
 <div class="app-container">
-  <TodoList></TodoList>
+  <Todo />
 </div>

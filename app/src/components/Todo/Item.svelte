@@ -1,14 +1,11 @@
 <script lang="ts">
-  import { Item } from "lib/Todo/Item";
+  import { createEventDispatcher } from "svelte";
+  const dispatch = createEventDispatcher()
 
-  export let item: Item = new Item("complete todo app")
-  
-  const toggleCompletes = (_event: MouseEvent) => {
-    item = item.completes()
-  }
+  export let item: any = {}
 
-  $: completed = item.completed() ? "completed" : ""
-  
+  const toggle = () => dispatch("toggle", item)
+  const remove = () => dispatch("remove", item)
 </script>
 
 <style>
@@ -18,6 +15,8 @@
 
   .content {
     display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
     align-items: center;
   }
 
@@ -26,22 +25,47 @@
   }
 
   .status {
+    flex: 0 0 auto;
     color: #676767;
+    font-size: 12px;
   }
 
   .text {
-    font-size: 1em;
+    flex: 1 1 auto;
+    font-size: 12px;
+  }
+
+  button.remove-button {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: none;
+    outline: none;
+    font-size: 8px;
+    background-color: #FFFFFF;
   }
 
 </style>
 
 <div class="todo-item">
-  <div class="content {completed}" on:click={toggleCompletes}>
+  <div 
+    class="content" 
+    class:completed={item.status === "completed"} 
+    on:click={toggle}>
+    
     <p class="text">
-      {item.text()}
+      {item.text}
     </p>
     <p class="status">
-      {completed}
+      {item.status}
     </p>
+
+    <button 
+      class="remove-button"
+      on:click|stopPropagation={remove}>
+      ✕
+    </button>
   </div>
 </div>

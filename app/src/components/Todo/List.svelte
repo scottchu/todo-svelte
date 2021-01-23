@@ -1,25 +1,11 @@
 <script lang="ts">
-  import { Item } from "lib/Todo/Item"
-  import { List } from "lib/Todo/List"
-  import TodoItem from "./Item"
-
-  export const list: List = new List("Pending", [
-    new Item("read category theory"),
-    new Item("completes the todo app"),
-    new Item("prototype web worker"),
-    new Item("add rxjs"),
-  ])
-  
+  export var items: any[]
 </script>
 
 <style>
   .todo-list {
     position: relative;
     border: 1px solid #EFEFEF;
-  }
-
-  .title {
-    padding: 0px 12px;
   }
 
   ul.list {
@@ -31,20 +17,14 @@
   li.item {
     padding: 6px 12px;
   }
-  
-  li.item:not(:last-of-type) {
 
-  }
 </style>
 
 <div class="todo-list">
-  <div class="title">
-    <h3>{list.name()}</h3>
-  </div>
   <ul class="list">
-    {#each list.items() as item }
+    {#each items as item}
       <li class="item">
-        <TodoItem item={item} />
+        <slot prop={item}></slot>
       </li>
     {/each}
   </ul>
