@@ -1,71 +1,53 @@
 <script lang="ts">
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher()
+  import { slide, blur } from "svelte/transition";
 
-  export let item: any = {}
+  import Button from "../Button"
+  import Card from "../Card"
+  import Label from "../Label"
+  import Text from "../Text"
 
-  const toggle = () => dispatch("toggle", item)
-  const remove = () => dispatch("remove", item)
+  export let item: any
+
+  const onClick = () => dispatch("click", item)
+  const onClose = () => dispatch("close", item)
 </script>
 
 <style>
-  .todo-item {
-    cursor: pointer;
+  .header {
+    display: flex;
+    justify-content: flex-end;
   }
 
   .content {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    align-items: center;
+    cursor: pointer;
   }
-
-  .content.completed > .text {
-    text-decoration: line-through;
-  }
-
-  .status {
-    flex: 0 0 auto;
-    color: #676767;
-    font-size: 12px;
-  }
-
-  .text {
-    flex: 1 1 auto;
-    font-size: 12px;
-  }
-
-  button.remove-button {
-    flex: 0 0 auto;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: none;
-    outline: none;
-    font-size: 8px;
-    background-color: #FFFFFF;
-  }
-
 </style>
 
-<div class="todo-item">
-  <div 
-    class="content" 
-    class:completed={item.status === "completed"} 
-    on:click={toggle}>
-    
-    <p class="text">
-      {item.text}
-    </p>
-    <p class="status">
-      {item.status}
-    </p>
-
-    <button 
-      class="remove-button"
-      on:click|stopPropagation={remove}>
-      ✕
-    </button>
-  </div>
+<div 
+  class="container" 
+  in:slide={{duration: 250}} 
+  out:slide={{duration: 250}}>
+  
+  <Card>
+    <div slot="header">
+      <div class="header">
+        <Button on:click={onClose}>×</Button>
+      </div>
+    </div>
+    <div slot="content" on:click={onClick} in:blur>
+      <div class="content">
+        <Text lineThrough={item.status == "completed"}>
+          {item.text}
+        </Text>
+      </div>
+    </div>
+    <div slot="footer">
+      <Label 
+        capitalize 
+        value={item.status} />
+    </div>
+  </Card>
+  
 </div>

@@ -3,17 +3,14 @@
   const dispatcher = createEventDispatcher()
 
   export let value: string
-  export let active: boolean = false
+  export let highlight: boolean
+  export let capitalize: boolean
 
   const onClick = () => dispatcher("click", value)
 </script>
 
 <style>
-  .container {
-    cursor: pointer;
-  }
-
-  p.tag {
+  span.label {
     color: #8F8F8F;
     font-size: 12px;
     font-weight: 300;
@@ -21,14 +18,20 @@
     transition: all ease-in-out 250ms;
   }
 
-  p.tag.active {
+  span.label.highlight {
     color: #4F4F4F;
     font-weight: 500;
   }
+
+  span.label.capitalize {
+    text-transform: capitalize;
+  }
 </style>
 
-<div class="container" on:click={onClick}>
-  <p class="tag" class:active>
-    {value}
-  </p>
-</div>
+<span 
+  class="label"
+  class:highlight
+  class:capitalize
+  on:click={onClick}>
+  {value}
+</span>

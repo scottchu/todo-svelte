@@ -1,9 +1,10 @@
 <script lang="ts">
-  import "normalize.css"
-  import Todo from "./Todo"
+  import Todo from "../Todo"
 </script>
 
 <style>
+  @import "normalize.css";
+  
   .app-container {
     position: absolute;
     width: 100vw;
@@ -19,8 +20,13 @@
     margin: 6px;
     line-height: 1em;
   }
+
+  :global(*) {
+    font-family: Helvetica, sans-serif;
+    line-height: 1em;
+  }
 </style>
 
-<div class="app-container">
+<div class="app-container"> 
   <Todo />
 </div>
