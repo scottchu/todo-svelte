@@ -38,7 +38,7 @@
     border: none;
     outline: none;
 
-    padding: 6px 6px;
+    padding: 6px 16px;
     
     color: #4F4F4F;
     font-size: 12px;

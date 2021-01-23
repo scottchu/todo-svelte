@@ -5,7 +5,7 @@
   import Filter from "./Filter"
 
   const statuses = ["all", "active", "completed"]
-  let activeStatus = "all"
+  let selectedStatus = "all"
 
   let items = [
     {
@@ -23,7 +23,7 @@
   ]
 
   $: showItems = items.filter(item => {
-    return activeStatus === "all" || activeStatus === item.status
+    return selectedStatus === "all" || selectedStatus === item.status
   })
 
   let newTodo = ""
@@ -62,7 +62,7 @@
 
 </script>
 
-{@debug activeStatus}
+{@debug selectedStatus}
 
 <style>
   .todo-app {
@@ -85,7 +85,9 @@
     border-bottom: 1px solid grey;
   }
 
-  
+  footer {
+    padding: 0 12px;
+  }
 </style>
 
 <div class="todo-app">
@@ -105,8 +107,9 @@
       </List>
     </main>
     <footer>
-      <Filter {statuses} 
-        bind:active={activeStatus}/>
+      <Filter 
+        {statuses}
+        bind:selected={selectedStatus} />
     </footer>
   </div>
 </div>
