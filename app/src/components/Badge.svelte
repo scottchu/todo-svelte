@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { createEventDispatcher } from "svelte"
-  const dispatcher = createEventDispatcher()
   import Label from "./Label"
   
   export let value: string
@@ -10,10 +8,11 @@
 
 <style>
   .badge {
-    display: flex;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
+    margin: -3px -6px;
     padding: 3px 6px;
     background: none;
     border-radius: 1px;

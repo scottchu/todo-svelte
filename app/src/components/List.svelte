@@ -4,7 +4,7 @@
 </script>
 
 <style>
-  .container {
+  .list-container {
     position: relative;
   }
 
@@ -21,7 +21,7 @@
 
 </style>
 
-<div class="container">
+<div class="list-container">
   <ul 
     class="list"
     class:horizontal>

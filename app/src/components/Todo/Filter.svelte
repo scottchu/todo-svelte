@@ -19,6 +19,9 @@
 </script>
 
 <style>
+  .filter {
+    padding: 6px 0;
+  }
 </style>
 
 <div class="filter">

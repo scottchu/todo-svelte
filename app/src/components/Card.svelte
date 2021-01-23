@@ -5,7 +5,7 @@
 </script>
 
 <style>
-  .container {
+  .card {
     background: white;
     border: 1px solid #CFCFCF;
     border-radius: 2px;
@@ -28,14 +28,14 @@
   }
 
   .footer {
-    padding: 3px 12px 6px;
+    padding: 6px 12px 6px;
     border-top: 1px solid #EFEFEF;
   }
 
 </style>
 
 <!-- wrapper -->
-<div class="container">
+<div class="card">
   <div class="inner-container">
     <section class="header">
       <slot name="header"></slot>
