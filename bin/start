@@ -2,4 +2,4 @@
 
 set -e
 
-app npm run dev.serve
+app npm run start
