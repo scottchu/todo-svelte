@@ -1,10 +1,9 @@
 <script lang="ts">
-  import Todo from "../Todo"
+  import "normalize.css";
+  import Todo from "./Todo"
 </script>
 
 <style>
-  @import "normalize.css";
-  
   .app-container {
     position: absolute;
     width: 100vw;

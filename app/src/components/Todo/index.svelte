@@ -1,8 +1,8 @@
 <script lang="ts">
   import Card from "../Card"
   import List from "../List"
+  import TextInput from "../TextInput"
   import Item from "./Item"
-  import Input from "./Input"
   import Filter from "./Filter"
 
   const statuses = ["all", "active", "completed"]
@@ -10,15 +10,15 @@
 
   let items = [
     {
-      text: "dlkjfalksdfjlaksdjflasdjlkasdjflaskdjflaksdjflaksdjflkajdsflkjadslkfjlakdsjfladsjfljasdlfadslfkjaldkfjlajflajkdfalkjl",
+      text: "Finish Category Theory Chapter 4",
       status: "completed"
     },
     {
-      text: "b",
+      text: "Kiss Hunnie",
       status: "active"
     },
     {
-      text: "c",
+      text: "Spank Hunnie",
       status: "active"
     },
   ]
@@ -70,7 +70,7 @@
     align-items: flex-start;
 
     padding-top: 36px;
-    
+
     box-sizing: border-box;
   }
 
@@ -86,10 +86,10 @@
   <div class="inner-container">
     <Card>
       <div class="header" slot="header">
-        <Input 
-        bind:value={newTodo} 
-        placeholder={"New Todo..."}
-        on:submit={onSubmit} />
+        <TextInput 
+          bind:value={newTodo} 
+          placeholder={"New Todo..."}
+          on:submit={onSubmit} />
       </div>
       <div class="content" slot="content">
         <List items={showItems} let:item>
