@@ -2,9 +2,7 @@
   import { createEventDispatcher } from "svelte";
   const dispatch = createEventDispatcher();
 
-  import List from "../List";
-  import Badge from "../Badge";
-  import Button from "../Button";
+  import {Badge, Button, List} from "components/Common"
 
   export let statuses: string[] = [];
 

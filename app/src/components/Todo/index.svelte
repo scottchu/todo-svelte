@@ -1,7 +1,6 @@
 <script lang="ts">
-  import Card from "../Card"
-  import List from "../List"
-  import TextInput from "../TextInput"
+  import {Card, List, TextInput} from "components/Common"
+
   import Item from "./Item"
   import Filter from "./Filter"
 

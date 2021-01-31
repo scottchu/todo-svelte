@@ -23,6 +23,7 @@ const base = () => {
       extensions: [".js", ".json"],
       alias: {
         lib: project.src("lib"),
+        components: project.src("components")
       },
     },
     module: {

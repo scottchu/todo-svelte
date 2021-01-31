@@ -3,10 +3,7 @@
   const dispatch = createEventDispatcher()
   import { slide, blur } from "svelte/transition";
 
-  import Button from "../Button"
-  import Card from "../Card"
-  import Label from "../Label"
-  import Text from "../Text"
+  import { Button, Card, Label, Text } from "components/Common"
 
   export let item: any
 
