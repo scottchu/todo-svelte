@@ -1,9 +1,9 @@
 const { merge } = require("webpack-merge")
 
 const use = (...configurations) => (...args) => {
-  return merge(
-    configurations
-      .map(configuration => configuration(...args)))
+  const applied = configurations
+    .map(configuration => configuration(...args))
+  return  merge(applied)
 }
 
 module.exports = { use }

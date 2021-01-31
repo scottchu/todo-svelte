@@ -15,7 +15,7 @@ const plugins = (mode) => {
   })]: []
 }
 
-const config = (_, {mode = "development"} = {}) => {
+const css = (_, {mode = "development"} = {}) => {
   return {
     module: {
       rules: [
@@ -29,4 +29,4 @@ const config = (_, {mode = "development"} = {}) => {
   }
 }
 
-module.exports = config
+module.exports = css

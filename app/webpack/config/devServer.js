@@ -6,7 +6,7 @@ const port = ({defaultTo = 80} = {}) => {
 
 const host = () => "0.0.0.0"
 
-module.exports = () => {
+const devServer = () => {
   return {
     devServer: {
       contentBase: project.dist(),
@@ -17,3 +17,5 @@ module.exports = () => {
     },
   }
 }
+
+module.exports = devServer

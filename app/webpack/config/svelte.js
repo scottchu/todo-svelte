@@ -2,7 +2,7 @@ const sveltePreprocess = require("svelte-preprocess")
 
 const {path: {project}} = require("../../utils")
 
-module.exports = () => {
+const svelte = () => {
   return {
     resolve: {
       extensions: [".svelte", ".mjs"],
@@ -34,3 +34,5 @@ module.exports = () => {
     ],
   }
 }
+
+module.exports = svelte

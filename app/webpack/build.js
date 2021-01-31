@@ -1,6 +1,6 @@
 // plugins
 const base = require("./base")
-const optimization = require("./config")
+const { optimization } = require("./config")
 
 const { config } = require("../utils")
 

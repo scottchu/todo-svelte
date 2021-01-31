@@ -1,6 +1,6 @@
 const { project } = require("../../utils/path")
 
-module.exports = () => {
+const typescript = () => {
   return {
     resolve: {
       extensions: [".ts"]
@@ -22,3 +22,5 @@ module.exports = () => {
     },
   }
 }
+
+module.exports = typescript
