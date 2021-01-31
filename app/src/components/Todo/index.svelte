@@ -14,11 +14,11 @@
       status: "completed"
     },
     {
-      text: "Kiss Hunnie",
+      text: "Netflix and Chill",
       status: "active"
     },
     {
-      text: "Spank Hunnie",
+      text: "Remind Gillian about my new MacBook Pro",
       status: "active"
     },
   ]
